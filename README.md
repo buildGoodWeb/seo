@@ -6,6 +6,12 @@ chrome插件：
 
 1，SEO-HTML； 2，disable-HTML。
 
+https://www.woorank.com
+
+https://developers.google.com/speed/pagespeed/insights/
+
+chrome 控制台 Audits
+
 ## 百度优化指南
 收录、排序、展 现 
 

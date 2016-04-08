@@ -1,4 +1,4 @@
-```javascript
+` ``javascript
 
 //html
 <p id="loginInfo"></p>
@@ -31,4 +31,4 @@ if (typeof pageVisibility.hidden !== "undefined") {
 }
 })();
 
-```
+` ``

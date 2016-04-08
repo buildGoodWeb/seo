@@ -1,10 +1,10 @@
-   
-   //html
-   <p id="loginInfo"></p>
-   
-   //js
-   (function() {
-    if (typeof pageVisibility.hidden !== "undefined") {
+      
+      //html
+      <p id="loginInfo"></p>
+      
+      //js
+      (function() {
+      if (typeof pageVisibility.hidden !== "undefined") {
         var eleLoginInfo = document.querySelector("#loginInfo");
         var funLoginInfo = function() {
             var username = localStorage.username || sessionStorage.username;
@@ -25,7 +25,7 @@
         window.addEventListener("unload", function() {
             localStorage.removeItem("username");
         })
-    } else {
+      } else {
         alert("弹框？？？没错，因为你的这个浏览器不支持Page Visibility API的啦！");    
-    }
-})();
+      }
+      })();

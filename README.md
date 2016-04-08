@@ -10,6 +10,8 @@ https://www.woorank.com
 
 https://developers.google.com/speed/pagespeed/insights/
 
+http://aotu.io/notes/2016/03/16/optimization/
+
 chrome 控制台 Audits
 
 ## 百度优化指南

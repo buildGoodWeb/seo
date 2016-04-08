@@ -1,33 +1,30 @@
-```js
-
-//html
-<p id="loginInfo"></p>
-
-//js
-(function() {
-if (typeof pageVisibility.hidden !== "undefined") {
-  var eleLoginInfo = document.querySelector("#loginInfo");
-  var funLoginInfo = function() {
-      var username = localStorage.username || sessionStorage.username;
-      if (username) {
-          eleLoginInfo.innerHTML = '欢迎回来，<strong>' + username + '</strong>';
-          sessionStorage.username = username;
-      } else {
-          eleLoginInfo.innerHTML = '您尚未登录，请<a target="_blank" href="'+ location.href.replace("-1.", "-2.") +'">登录</a>';
-      }    
-  }
-  pageVisibility.visibilitychange(function() {
-      if (!this.hidden) funLoginInfo();
-  });
-  
-  funLoginInfo();
-  
-  // 页面关闭清除localStorage
-  window.addEventListener("unload", function() {
-      localStorage.removeItem("username");
-  })
-} else {
-  alert("弹框？？？没错，因为你的这个浏览器不支持Page Visibility API的啦！");    
-}
-})();
-```
+          //html
+          <p id="loginInfo"></p>
+          
+          //js
+          (function() {
+          if (typeof pageVisibility.hidden !== "undefined") {
+            var eleLoginInfo = document.querySelector("#loginInfo");
+            var funLoginInfo = function() {
+                var username = localStorage.username || sessionStorage.username;
+                if (username) {
+                    eleLoginInfo.innerHTML = '欢迎回来，<strong>' + username + '</strong>';
+                    sessionStorage.username = username;
+                } else {
+                    eleLoginInfo.innerHTML = '您尚未登录，请<a target="_blank" href="'+ location.href.replace("-1.", "-2.") +'">登录</a>';
+                }    
+            }
+            pageVisibility.visibilitychange(function() {
+                if (!this.hidden) funLoginInfo();
+            });
+            
+            funLoginInfo();
+            
+            // 页面关闭清除localStorage
+            window.addEventListener("unload", function() {
+                localStorage.removeItem("username");
+            })
+          } else {
+            alert("弹框？？？没错，因为你的这个浏览器不支持Page Visibility API的啦！");    
+          }
+          })();

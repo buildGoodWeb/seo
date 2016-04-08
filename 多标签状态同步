@@ -1,4 +1,5 @@
 ```javascript
+
 //html
 <p id="loginInfo"></p>
 
@@ -29,4 +30,5 @@ if (typeof pageVisibility.hidden !== "undefined") {
   alert("弹框？？？没错，因为你的这个浏览器不支持Page Visibility API的啦！");    
 }
 })();
+
 ```

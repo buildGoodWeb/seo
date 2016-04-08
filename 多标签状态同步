@@ -1,30 +1,41 @@
-          //html
-          <p id="loginInfo"></p>
-          
-          //js
-          (function() {
-          if (typeof pageVisibility.hidden !== "undefined") {
-            var eleLoginInfo = document.querySelector("#loginInfo");
-            var funLoginInfo = function() {
-                var username = localStorage.username || sessionStorage.username;
-                if (username) {
-                    eleLoginInfo.innerHTML = '欢迎回来，<strong>' + username + '</strong>';
-                    sessionStorage.username = username;
-                } else {
-                    eleLoginInfo.innerHTML = '您尚未登录，请<a target="_blank" href="'+ location.href.replace("-1.", "-2.") +'">登录</a>';
-                }    
-            }
-            pageVisibility.visibilitychange(function() {
-                if (!this.hidden) funLoginInfo();
-            });
-            
-            funLoginInfo();
-            
-            // 页面关闭清除localStorage
-            window.addEventListener("unload", function() {
-                localStorage.removeItem("username");
-            })
-          } else {
-            alert("弹框？？？没错，因为你的这个浏览器不支持Page Visibility API的啦！");    
-          }
-          })();
+场景如下：
+页面一：去一个网站买东西，未登录状态下，进入首页；
+页面二：然后新窗口打开任意页面，登录并成功返回。
+再次访问页面一，发现页面还是未登录状态，实际上用户已经登录了，这种体验是很差的。我们是不是有什么办法可以实现多标签状态同步呢？有的，利用Page Visibility：
+
+页面可见性API就是表示网页可见还是不可见的。页面可见性API有两个属性，一个事件，如下：
+> document.hidden: Boolean值，表示当前页面可见还是不可见
+> document.visibilityState: 返回当前页面的可见状态，状态值有hidden、visible、prerender、preview。
+> visibilitychange: 当可见状态改变时候触发的事件。
+> 浏览器支持：IE10+、Chrome、FireFox。
+
+//html
+<p id="loginInfo"></p>
+
+//js
+(function() {
+if (typeof pageVisibility.hidden !== "undefined") {
+  var eleLoginInfo = document.querySelector("#loginInfo");
+  var funLoginInfo = function() {
+      var username = localStorage.username || sessionStorage.username;
+      if (username) {
+          eleLoginInfo.innerHTML = '欢迎回来，<strong>' + username + '</strong>';
+          sessionStorage.username = username;
+      } else {
+          eleLoginInfo.innerHTML = '您尚未登录，请<a target="_blank" href="'+ location.href.replace("-1.", "-2.") +'">登录</a>';
+      }    
+  }
+  pageVisibility.visibilitychange(function() {
+      if (!this.hidden) funLoginInfo();
+  });
+  
+  funLoginInfo();
+  
+  // 页面关闭清除localStorage
+  window.addEventListener("unload", function() {
+      localStorage.removeItem("username");
+  })
+} else {
+  alert("弹框？？？没错，因为你的这个浏览器不支持Page Visibility API的啦！");    
+}
+})();
